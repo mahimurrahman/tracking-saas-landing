@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0b0b0b;
+  --card: #121212;
+  --border: #1f1f1f;
+  --accent: #4f46e5;
+  --text: #ffffff;
+  --muted: #9ca3af;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text);
+  background-image:
+    radial-gradient(circle at top, rgba(79, 70, 229, 0.12), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%);
+}
+
+section[id],
+main[id] {
+  scroll-margin-top: 7rem;
+}
+
+::selection {
+  background: rgba(79, 70, 229, 0.4);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  a,
+  button {
+    @apply outline-none;
+  }
+}
+
+@layer components {
+  .surface-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+      var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.02),
+      0 28px 80px rgba(0, 0, 0, 0.28);
+  }
+
+  .glass-panel {
+    background: rgba(18, 18, 18, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(18px);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 1), rgba(99, 102, 241, 0.95));
+    color: white;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 16px 40px rgba(79, 70, 229, 0.28);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 20px 48px rgba(79, 70, 229, 0.34);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+@layer utilities {
+  .section-spacing {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+}
